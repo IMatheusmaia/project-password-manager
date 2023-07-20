@@ -6,15 +6,16 @@ import './App.css';
 function App() {
   const [visibility, setVisibility] = useState<boolean>(false);
 
-  function handleVisibility(): void {
-    setVisibility(true);
+  function handleVisibility(event): void {
+    event.preventDefault();
+    setVisibility(!visibility);
   }
 
   return (
     <>
       <Header />
-      { visibility && <Form isVisible={ () => handleVisibility } />}
-      {!visibility && <button onClick={ handleVisibility }>Cadastrar nova Senha </button>}
+      { visibility && <Form isVisible={ handleVisibility } />}
+      {!visibility && <button onClick={ handleVisibility }> Cadastrar nova senha</button>}
     </>
   );
 }

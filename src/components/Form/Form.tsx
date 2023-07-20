@@ -1,10 +1,10 @@
 import './index.css';
 
-type FormViewProp = {
-  isVisible : () => void
+type ViewFormProp = {
+  isVisible: (event: React.FormEvent<HTMLButtonElement>) => void
 };
 
-function Form({ isVisible }: FormViewProp) {
+function Form({ isVisible }: ViewFormProp) {
   return (
     <form>
       <ul>
@@ -35,7 +35,7 @@ function Form({ isVisible }: FormViewProp) {
       </ul>
       <span>* Campos obrigatórios</span>
       <button>Cadastrar</button>
-      <button onClick={ isVisible }>Cancelar</button>
+      <button onClick={ (event) => isVisible(event) }>Cancelar</button>
     </form>
   );
 }
