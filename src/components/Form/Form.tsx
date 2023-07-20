@@ -1,10 +1,14 @@
 import './index.css';
 
-type ViewFormProp = {
-  isVisible: (event: React.FormEvent<HTMLButtonElement>) => void
+type ViewFormType = {
+  isVisible: () => () => void
 };
 
-function Form({ isVisible }: ViewFormProp) {
+function Form({ isVisible }: ViewFormType) {
+  function handleCancelView(event: React.FormEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    isVisible()();
+  }
   return (
     <form>
       <ul>
@@ -35,7 +39,7 @@ function Form({ isVisible }: ViewFormProp) {
       </ul>
       <span>* Campos obrigatórios</span>
       <button>Cadastrar</button>
-      <button onClick={ (event) => isVisible(event) }>Cancelar</button>
+      <button onClick={ handleCancelView }>Cancelar</button>
     </form>
   );
 }
