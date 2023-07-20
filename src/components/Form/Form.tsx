@@ -1,6 +1,12 @@
-function Form() {
+import './index.css';
+
+type FormViewProp = {
+  isVisible : () => void
+};
+
+function Form({ isVisible }: FormViewProp) {
   return (
-    <div>
+    <form>
       <ul>
         <li>
           <label>
@@ -29,8 +35,8 @@ function Form() {
       </ul>
       <span>* Campos obrigatórios</span>
       <button>Cadastrar</button>
-      <button>Cancelar</button>
-    </div>
+      <button onClick={ isVisible }>Cancelar</button>
+    </form>
   );
 }
 export default Form;

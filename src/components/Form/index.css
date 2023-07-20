@@ -1,0 +1,9 @@
+form {
+  background-color: rebeccapurple;
+  padding: 1rem;
+}
+
+form > ul > li {
+  list-style: none;
+  padding: 0.3rem;
+}
