@@ -38,6 +38,9 @@ function App() {
     });
     setSubmit(true);
   };
+  const handleRemove = (event: any) => {
+    setListInfos(listInfos.filter((info) => info.login !== event.target.id));
+  };
 
   return (
     <>
@@ -49,8 +52,11 @@ function App() {
         inputInfo={ inputInfo }
       />}
       {!visibility && <button onClick={ handleVisibility }> Cadastrar nova senha</button>}
-      {submit && !visibility && <MiniCard listInfos={ listInfos } />}
-      {!submit && !visibility && <p> Nenhuma senha cadastrada </p>}
+      {submit && !visibility && <MiniCard
+        listInfos={ listInfos }
+        onClick={ (event) => handleRemove(event) }
+      />}
+      {(listInfos.length === 0) && <p>Nenhuma senha cadastrada</p>}
     </>
   );
 }

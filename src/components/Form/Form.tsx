@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import FormInfoType from '../../types/typeForm';
 import checkInfo from '../../Utils/checkInfo';
 import Display from '../Display/Display';
@@ -16,6 +17,10 @@ function Form({ isVisible, handleChange, inputInfo, onSubmit }: ViewFormType) {
     isVisible()();
   }
   const { service, login, password, url } = inputInfo;
+  const [viewPass, setViewPass] = useState<boolean>(false);
+  function handleViewPass(): void {
+    setViewPass(!viewPass);
+  }
   return (
     <>
       <form onSubmit={ onSubmit }>
@@ -46,9 +51,17 @@ function Form({ isVisible, handleChange, inputInfo, onSubmit }: ViewFormType) {
           <input
             required
             onChange={ (event) => handleChange(event) }
-            type="password"
+            type={ viewPass ? 'text' : 'password' }
             id="password"
             value={ password }
+          />
+        </label>
+        <label htmlFor="viewPass">
+          Esconder/Mostrar Senha
+          <input
+            onChange={ handleViewPass }
+            type="checkbox"
+            id="viewPass"
           />
         </label>
         <label htmlFor="url">
