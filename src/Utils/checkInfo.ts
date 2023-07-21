@@ -1,6 +1,6 @@
 import FormInfoType from '../types/typeForm';
 
-function checkInfo(inputInfo: FormInfoType) {
+function checkInfo(inputInfo: FormInfoType): boolean | undefined {
   const { service, login, password } = inputInfo;
   const emptyService = service === '';
   const emptyLogin = login === '';

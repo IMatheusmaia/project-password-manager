@@ -1,5 +1,6 @@
 import FormInfoType from '../../types/typeForm';
 import checkInfo from '../../Utils/checkInfo';
+import Display from '../Display/Display';
 import './index.css';
 
 type ViewFormType = {
@@ -15,57 +16,56 @@ function Form({ isVisible, handleChange, inputInfo }: ViewFormType) {
   }
   const { service, login, password, url } = inputInfo;
   return (
-    <form>
-      <ul>
-        <li>
-          <label htmlFor="service">
-            Nome do Serviço
-            <input
-              onChange={ (event) => handleChange(event) }
-              type="text"
-              id="service"
-              value={ service }
-            />
-          </label>
-        </li>
-        <li>
-          <label htmlFor="login">
-            Login
-            <span> * </span>
-            <input
-              onChange={ (event) => handleChange(event) }
-              type="text"
-              id="login"
-              value={ login }
-            />
-          </label>
-          <label htmlFor="password">
-            Senha
-            <span> * </span>
-            <input
-              onChange={ (event) => handleChange(event) }
-              type="password"
-              id="password"
-              value={ password }
-            />
-          </label>
-        </li>
-        <li>
-          <label htmlFor="url">
-            URL
-            <input
-              onChange={ (event) => handleChange(event) }
-              type="text"
-              id="url"
-              value={ url }
-            />
-          </label>
-        </li>
-      </ul>
-      <span>* Campos obrigatórios</span>
-      <button disabled={ !checkInfo(inputInfo) }>Cadastrar</button>
-      <button onClick={ handleCancelView }>Cancelar</button>
-    </form>
+    <>
+      <form>
+        <label htmlFor="service">
+          Nome do Serviço
+          <input
+            required
+            onChange={ (event) => handleChange(event) }
+            type="text"
+            id="service"
+            value={ service }
+          />
+        </label>
+        <label htmlFor="login">
+          Login
+          <span> * </span>
+          <input
+            required
+            onChange={ (event) => handleChange(event) }
+            type="text"
+            id="login"
+            value={ login }
+          />
+        </label>
+        <label htmlFor="password">
+          Senha
+          <span> * </span>
+          <input
+            required
+            onChange={ (event) => handleChange(event) }
+            type="password"
+            id="password"
+            value={ password }
+          />
+        </label>
+        <label htmlFor="url">
+          URL
+          <input
+            required
+            onChange={ (event) => handleChange(event) }
+            type="text"
+            id="url"
+            value={ url }
+          />
+        </label>
+        <span>* Campos obrigatórios</span>
+        <button disabled={ !checkInfo(inputInfo) }>Cadastrar</button>
+        <button onClick={ handleCancelView }>Cancelar</button>
+      </form>
+      <Display pass={ password } />
+    </>
   );
 }
 export default Form;
