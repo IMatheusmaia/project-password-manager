@@ -56,7 +56,7 @@ function App() {
         listInfos={ listInfos }
         onClick={ (event) => handleRemove(event) }
       />}
-      {(listInfos.length === 0) && <p>Nenhuma senha cadastrada</p>}
+      {(listInfos.length === 0) && <p>nenhuma senha cadastrada</p>}
     </>
   );
 }

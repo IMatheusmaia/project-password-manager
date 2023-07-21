@@ -18,7 +18,8 @@ function Form({ isVisible, handleChange, inputInfo, onSubmit }: ViewFormType) {
   }
   const { service, login, password, url } = inputInfo;
   const [viewPass, setViewPass] = useState<boolean>(false);
-  function handleViewPass(): void {
+  function handleViewPass(event: React.MouseEvent<HTMLButtonElement>): void {
+    event.preventDefault();
     setViewPass(!viewPass);
   }
   return (
@@ -56,14 +57,13 @@ function Form({ isVisible, handleChange, inputInfo, onSubmit }: ViewFormType) {
             value={ password }
           />
         </label>
-        <label htmlFor="viewPass">
-          Esconder/Mostrar Senha
-          <input
-            onChange={ handleViewPass }
-            type="checkbox"
-            id="viewPass"
-          />
-        </label>
+        <button
+          data-testid="show-hide-form-password"
+          onClick={ (event) => handleViewPass(event) }
+          id="viewPass"
+        >
+          Senha
+        </button>
         <label htmlFor="url">
           URL
           <input
