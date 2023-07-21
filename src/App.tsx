@@ -3,6 +3,7 @@ import Header from './components/Header/Header';
 import Form from './components/Form/Form';
 import MiniCard from './components/MiniCard/MiniCard';
 import FormInfoType from './types/typeForm';
+import Swal from 'sweetalert2';
 import './App.css';
 
 function App() {
@@ -37,6 +38,12 @@ function App() {
       url: '',
     });
     setSubmit(true);
+    Swal.fire({
+      icon: 'success',
+      title: 'Serviço cadastrado com sucesso',
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
   const handleRemove = (event: any) => {
     setListInfos(listInfos.filter((info) => info.login !== event.target.id));
