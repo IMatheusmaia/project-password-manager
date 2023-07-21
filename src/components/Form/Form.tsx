@@ -4,12 +4,13 @@ import Display from '../Display/Display';
 import './index.css';
 
 type ViewFormType = {
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   isVisible: () => () => void,
   handleChange:(event: React.ChangeEvent<HTMLInputElement>) => void,
   inputInfo: FormInfoType
 };
 
-function Form({ isVisible, handleChange, inputInfo }: ViewFormType) {
+function Form({ isVisible, handleChange, inputInfo, onSubmit }: ViewFormType) {
   function handleCancelView(event: React.FormEvent<HTMLButtonElement>) {
     event.preventDefault();
     isVisible()();
@@ -17,7 +18,7 @@ function Form({ isVisible, handleChange, inputInfo }: ViewFormType) {
   const { service, login, password, url } = inputInfo;
   return (
     <>
-      <form>
+      <form onSubmit={ onSubmit }>
         <label htmlFor="service">
           Nome do Serviço
           <input
