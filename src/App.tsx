@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import Swal from 'sweetalert2';
 import Header from './components/Header/Header';
 import Form from './components/Form/Form';
 import MiniCard from './components/MiniCard/MiniCard';
 import FormInfoType from './types/typeForm';
-import Swal from 'sweetalert2';
 import './App.css';
 
 function App() {
